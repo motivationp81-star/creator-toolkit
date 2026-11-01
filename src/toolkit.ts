@@ -1,7 +1,7 @@
 /**
- * Hinglish Creator Toolkit
- * Small utilities for creators who post in Hinglish (Hindi + English):
- * a YouTube title checker, a caption maker and a hashtag suggester.
+ * Creator Toolkit
+ * Small utilities for video creators: a YouTube title checker,
+ * a caption maker and a hashtag suggester.
  */
 
 // ---------------------------------------------------------------------------
@@ -10,7 +10,7 @@
 
 export interface TitleCheck {
   title: string;
-  /** Character count (Unicode code points, so Hindi text counts correctly). */
+  /** Character count (Unicode code points, so emoji count correctly). */
   length: number;
   limit: number;
   ok: boolean;
@@ -19,8 +19,8 @@ export interface TitleCheck {
 
 /**
  * Check a YouTube title against the platform's character limit (100).
- * Counts Unicode code points, so a Devanagari title is measured the same
- * way a viewer reads it — not by bytes.
+ * Counts Unicode code points, so a title is measured the same way a
+ * viewer reads it — not by bytes.
  */
 export function checkYouTubeTitle(title: string, limit = 100): TitleCheck {
   const length = [...title.trim()].length;
@@ -34,36 +34,36 @@ export function checkYouTubeTitle(title: string, limit = 100): TitleCheck {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Hinglish caption maker
+// 2. Caption maker
 // ---------------------------------------------------------------------------
 
 export type Mood = "happy" | "romantic" | "sad" | "energetic" | "devotional";
 
 const CAPTION_TEMPLATES: Record<Mood, string[]> = {
   happy: [
-    "{topic} aa gaya hai! Mood full fresh ho jayega, sunna mat bhoolna 🎵",
-    "Khushi wala din aur {topic} — isse better combo nahi hota 😊",
-    "{topic} ke saath aaj ka din ban gaya! Apno ko tag karo 👇",
+    "{topic} is out now! This one will brighten your day 🎵 Don't miss it",
+    "A good day + {topic} — the perfect combo 😊",
+    "{topic} just made today better! Tag someone who needs this 👇",
   ],
   romantic: [
-    "Dil ki baat, {topic} ke saath ❤️ Kisi khaas ko bhejna mat bhoolna",
-    "{topic} sunke uski yaad aa gayi... 💕",
-    "Mohabbat ho to aisi — {topic} dil ko chhu jayega ❤️",
+    "Straight from the heart — {topic} ❤️ Send this to someone special",
+    "{topic} reminded me of someone... 💕",
+    "Some feelings need a song — {topic} says it all ❤️",
   ],
   sad: [
-    "Kuch kahaniyan adhuri reh jati hain... {topic} 💔",
-    "{topic} — dard bhi kabhi kabhi sukoon deta hai 🥀",
-    "Aankhein nam ho jayengi, {topic} sunke 💧",
+    "Some stories stay unfinished... {topic} 💔",
+    "{topic} — sometimes the sad ones heal the most 🥀",
+    "Keep a tissue nearby for this one. {topic} 💧",
   ],
   energetic: [
-    "{topic} ke liye speaker full volume par! 🔥 Ye wala miss mat karna",
-    "Full Josh Mode ON ⚡ {topic} ne scene badal diya!",
-    "{topic} — energy level 100% 🚀 Nachne par majboor kar dega!",
+    "Turn the volume ALL the way up for {topic}! 🔥 Don't miss this one",
+    "Full energy mode: ON ⚡ {topic} just changed the game!",
+    "{topic} — 100% energy 🚀 You will be moving before the chorus hits!",
   ],
   devotional: [
-    "Jai ho! {topic} ke saath din ki shuruaat bhakti ke saath 🙏",
-    "{topic} sunke mann ko shanti mili 🕉️ Jai Shri Krishna",
-    "Bhakti ka rang, {topic} ke sang 🙏✨",
+    "Start the day with blessings 🙏 {topic}",
+    "{topic} brought a moment of peace today 🕊️",
+    "Faith, hope and {topic} 🙏✨",
   ],
 };
 
@@ -82,7 +82,7 @@ export function makeCaption(topic: string, mood: Mood = "happy"): string {
 // 3. Hashtag suggester
 // ---------------------------------------------------------------------------
 
-const BASE_TAGS = ["#hinglish", "#desicreator", "#india"];
+const BASE_TAGS = ["#contentcreator", "#creator", "#mustwatch"];
 
 /**
  * Build a clean hashtag list from a topic: base tags + one tag per topic

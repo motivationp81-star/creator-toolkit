@@ -2,30 +2,30 @@ import assert from "node:assert/strict";
 import { checkYouTubeTitle, makeCaption, suggestHashtags } from "../src/toolkit";
 
 // Title checker: normal title passes
-const ok = checkYouTubeTitle("Naya Rasiya Song | Official Video");
+const ok = checkYouTubeTitle("My New Song | Official Video");
 assert.equal(ok.ok, true);
-assert.equal(ok.length, 33);
+assert.equal(ok.length, 28);
 
 // Title checker: 101 characters fails with a clear message
 const long = checkYouTubeTitle("a".repeat(101));
 assert.equal(long.ok, false);
 assert.match(long.message, /Shorten it by 1/);
 
-// Title checker: Hindi (Devanagari) title counts characters, not bytes
-const hindi = checkYouTubeTitle("मेरा नया गाना");
-assert.equal(hindi.ok, true);
-assert.equal(hindi.length, [..."मेरा नया गाना"].length);
+// Title checker: an emoji counts as one character, not bytes or surrogates
+const emoji = checkYouTubeTitle("My New Song 🎵");
+assert.equal(emoji.ok, true);
+assert.equal(emoji.length, [..."My New Song 🎵"].length);
 
 // Caption maker: contains the topic and is deterministic
-const c1 = makeCaption("naya rasiya song", "energetic");
-const c2 = makeCaption("naya rasiya song", "energetic");
-assert.ok(c1.includes("naya rasiya song"));
+const c1 = makeCaption("my new cover song", "energetic");
+const c2 = makeCaption("my new cover song", "energetic");
+assert.ok(c1.includes("my new cover song"));
 assert.equal(c1, c2);
 
 // Hashtags: base tags present, deduplicated, capped at 10
-const tags = suggestHashtags("Naya Rasiya Song", ["#Rasiya"]);
-assert.ok(tags.includes("#hinglish"));
-assert.ok(tags.includes("#rasiya"));
+const tags = suggestHashtags("My New Cover Song", ["#Cover"]);
+assert.ok(tags.includes("#contentcreator"));
+assert.ok(tags.includes("#cover"));
 assert.equal(new Set(tags).size, tags.length);
 assert.ok(tags.length <= 10);
 

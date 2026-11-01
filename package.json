@@ -1,1 +1,18 @@
-{"description":"Small TypeScript utilities for Hinglish creators: a YouTube title checker, a Hinglish caption maker and a hashtag suggester.","devDependencies":{"@types/node":"^22.14.0","tsx":"^4.21.0","typescript":"^5.6.0"},"license":"MIT","name":"hinglish-creator-toolkit","scripts":{"cli":"tsx src/cli.ts","demo":"tsx src/cli.ts --topic \"naya rasiya song\" --mood energetic --title \"Naya Rasiya Song | Official Video | New Haryanvi Song 2026\"","lint":"tsc --noEmit","test":"tsx test/toolkit.test.ts"},"type":"module","version":"0.1.0"}
+{
+  "description": "Small TypeScript utilities for video creators: a YouTube title checker, a caption maker and a hashtag suggester.",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.6.0"
+  },
+  "license": "MIT",
+  "name": "creator-toolkit",
+  "scripts": {
+    "cli": "tsx src/cli.ts",
+    "demo": "tsx src/cli.ts --topic \"my new cover song\" --mood energetic --title \"My New Song | Official Video | 2026\"",
+    "lint": "tsc --noEmit",
+    "test": "tsx test/toolkit.test.ts"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

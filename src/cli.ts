@@ -1,8 +1,8 @@
 /**
- * Hinglish Creator Toolkit — CLI
+ * Creator Toolkit — CLI
  *
  * Usage:
- *   npm run cli -- --topic "naya rasiya song" --mood energetic --title "My Title"
+ *   npm run cli -- --topic "my new cover song" --mood energetic --title "My Title"
  */
 import { checkYouTubeTitle, makeCaption, suggestHashtags, type Mood } from "./toolkit";
 
@@ -12,7 +12,7 @@ function argValue(flag: string): string | undefined {
   return i >= 0 ? args[i + 1] : undefined;
 }
 
-const topic = argValue("--topic") ?? "mera naya gaana";
+const topic = argValue("--topic") ?? "my new video";
 const mood = (argValue("--mood") ?? "happy") as Mood;
 const title = argValue("--title");
 
